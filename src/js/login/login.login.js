@@ -22,6 +22,7 @@
           .then(function(userData) {
             $window.localStorage.setItem('user', JSON.stringify(userData.data.user));
             $window.localStorage.setItem('token', JSON.stringify(userData.data.token));
+            $state.go('/home');
             $window.localStorage.getItem('user');
           })
           .catch(function(err) {
