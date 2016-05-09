@@ -1,7 +1,11 @@
-// sample angular code
+require('./home/home.js'),
 
-var app = angular.module('myApp', []);
-
-app.controller('myController', ['$scope', function($scope) {
-  $scope.greeting = "Hello World!";
-}]);
+angular.module('app', ['app.home', 'ui.router'])
+.config(function ($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('app', {
+      url: '/',
+      templateUrl: 'js/home/login/home.login.login.html',
+    });
+  $urlRouterProvider.otherwise('/');
+});
