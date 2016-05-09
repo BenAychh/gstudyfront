@@ -2,7 +2,7 @@
   'use strict';
   require('./routes.js')();
 
-  angular.module('app', ['ui.router'])
+  angular.module('app', ['ui.router', 'app.home'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('login', {
@@ -16,6 +16,6 @@
       .state('home', {
         url: '/home',
         templateUrl: 'js/home/home.index.html',
-      });
+      })
   });
 })();

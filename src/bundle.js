@@ -48,7 +48,7 @@
 	  'use strict';
 	  __webpack_require__(1)();
 
-	  angular.module('app', ['ui.router'])
+	  angular.module('app', ['ui.router', 'app.home'])
 	  .config(function ($stateProvider, $urlRouterProvider) {
 	    $stateProvider
 	      .state('login', {
@@ -62,7 +62,7 @@
 	      .state('home', {
 	        url: '/home',
 	        templateUrl: 'js/home/home.index.html',
-	      });
+	      })
 	  });
 	})();
 
@@ -83,13 +83,9 @@
 	angular.module('app.home', ['ui.router'])
 	.config(function ($stateProvider) {
 	  $stateProvider
-	    .state('home', {
-	      url: '/',
-	      templateUrl: 'home.index.html',
-	    })
 	    .state('home.test', {
 	      url: '/test',
-	      templateUrl: 'home.test.html',
+	      templateUrl: 'js/home/home.test.html',
 	    });
 	});
 
