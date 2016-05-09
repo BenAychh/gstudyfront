@@ -7,14 +7,22 @@
     $stateProvider
     .state('login', {
       url: '/',
-      templateUrl: 'js/home/home.index.html',
-      controller: function($rootScope, $scope, authService) {
+      templateUrl: 'js/login/login.login.html',
+      controller: function($rootScope, $scope, $location, $http, $window) {
         $scope.user = {};
         $scope.login = function() {
-          authService.login($scope.user)
-          .then(function(user) {
-            authService.setUserInfo(user);
-            $rootScope.currentUser = authService.getUserInfo();
+          return $http({
+            method: 'POST',
+            url: 'http://localhost:3000/users/login',
+            data: {
+              username: $scope.user.username,
+              password: $scope.user.password
+            }
+          })
+          .then(function(userData) {
+            $window.localStorage.setItem('user', JSON.stringify(userData.data.user));
+            $window.localStorage.setItem('token', JSON.stringify(userData.data.token));
+            $window.localStorage.getItem('user');
           })
           .catch(function(err) {
             console.log(err);
@@ -23,5 +31,5 @@
       }
     });
   });
-  
+
 })();

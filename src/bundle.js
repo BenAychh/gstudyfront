@@ -48,13 +48,9 @@
 	  'use strict';
 	  __webpack_require__(1)();
 
-	  angular.module('app', ['ui.router', 'app.home'])
+	  angular.module('app', ['ui.router', 'app.home', 'app.login'])
 	  .config(function ($stateProvider, $urlRouterProvider) {
 	    $stateProvider
-	      .state('login', {
-	        url: '/',
-	        templateUrl: 'js/login/login.login.html',
-	      })
 	      .state('register', {
 	        url: '/register',
 	        templateUrl: 'js/register/register.register.html',
@@ -69,6 +65,7 @@
 
 	module.exports = () => {
 	  __webpack_require__(2);
+	  __webpack_require__(3);
 	};
 
 
@@ -93,6 +90,48 @@
 	    templateUrl: 'js/home/newDeck/home.newDeck.index.html',
 	  });
 	});
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	(function () {
+
+	  'use strict';
+
+	  angular.module('app.login', ['ui.router'])
+	  .config(function ($stateProvider) {
+	    $stateProvider
+	    .state('login', {
+	      url: '/',
+	      templateUrl: 'js/login/login.login.html',
+	      controller: function($rootScope, $scope, $location, $http, $window) {
+	        $scope.user = {};
+	        $scope.login = function() {
+	          return $http({
+	            method: 'POST',
+	            url: 'http://localhost:3000/users/login',
+	            data: {
+	              username: $scope.user.username,
+	              password: $scope.user.password
+	            }
+	          })
+	          .then(function(userData) {
+	            console.log(userData.data);
+	            $window.localStorage.setItem('user', JSON.stringify(userData.data.user));
+	            $window.localStorage.setItem('token', JSON.stringify(userData.data.token));
+	            $window.localStorage.getItem('user');
+	          })
+	          .catch(function(err) {
+	            console.log(err);
+	          });
+	        }
+	      }
+	    });
+	  });
+
+	})();
 
 
 /***/ }
