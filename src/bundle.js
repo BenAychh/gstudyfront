@@ -44,26 +44,28 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1)();
+	(function() {
+	  'use strict';
+	  __webpack_require__(1)();
 
-	angular.module('app', ['ui.router'])
-	.config(function ($stateProvider, $urlRouterProvider) {
-	  $stateProvider
-	    .state('login', {
-	      url: '/',
-	      templateUrl: 'js/login/login.login.html',
-	    })
-	    .state('register', {
-	      url: '/register',
-	      templateUrl: 'js/register/register.register.html',
-	    })
-	    .state('home', {
-	      url: '/home',
-	      templateUrl: 'js/home/index/home.index.html',
-
-	    })
-	  $urlRouterProvider.otherwise('/');
-	});
+	  angular.module('app', ['ui.router'])
+	  .config(function ($stateProvider, $urlRouterProvider) {
+	    $stateProvider
+	      .state('login', {
+	        url: '/',
+	        templateUrl: 'js/login/login.login.html',
+	      })
+	      .state('register', {
+	        url: '/register',
+	        templateUrl: 'js/register/register.register.html',
+	      })
+	      .state('home', {
+	        url: '/home',
+	        templateUrl: 'js/home/home.index.html',
+	      })
+	    $urlRouterProvider.otherwise('/');
+	  });
+	})();
 
 
 /***/ },
@@ -79,7 +81,19 @@
 /* 2 */
 /***/ function(module, exports) {
 
-	// angular.module('app.login');
+	angular.module('app.home', ['ui.router'])
+	.config(function ($stateProvider, $urlRouterProvider) {
+	  $stateProvider
+	    .state('home', {
+	      url: '/',
+	      templateUrl: 'home.index.html',
+	    })
+	    .state('home.test', {
+	      url: '/test',
+	      templateUrl: 'home.index.html',
+	    });
+	  $urlRouterProvider.otherwise('/');
+	});
 
 
 /***/ }
