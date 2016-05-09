@@ -44,10 +44,10 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	__webpack_require__(1)();
+
 	(function () {
 	  'use strict';
-	  __webpack_require__(1)();
-
 	  angular.module('app', ['ui.router', 'app.home'])
 	  .config(function ($stateProvider, $urlRouterProvider) {
 	    $stateProvider
@@ -76,23 +76,42 @@
 /* 2 */
 /***/ function(module, exports) {
 
-	angular.module('app.home', ['ui.router'])
-	.config(function ($stateProvider) {
-	  $stateProvider
-	  .state('home', {
-	    url: '/home',
-	    abstract: true,
-	    templateUrl: 'js/home/home.index.html',
-	  })
-	  .state('home.default', {
-	    url: '',
-	    templateUrl: 'js/home/default/home.default.html',
-	  })
-	  .state('home.newDeck', {
-	    url: '/newDeck',
-	    templateUrl: 'js/home/newDeck/home.newDeck.index.html',
+	(function () {
+	  'use strict';
+
+	  angular.module('app.home', [
+	    'ui.router',
+	  ])
+	  .config(function ($stateProvider) {
+	    $stateProvider
+	    .state('home', {
+	      url: '/home',
+	      templateUrl: 'js/home/home.index.html',
+	    })
+	    .state('home.default', {
+	      url: '',
+	      templateUrl: 'js/home/default/home.default.html',
+	    })
+	    .state('home.newDeck', {
+	      url: '/newDeck',
+	      templateUrl: 'js/home/newDeck/home.newDeck.index.html',
+	      controller: function ($scope) {
+	        $scope.newDeck = {
+	          deckName: '',
+	          description: '',
+	          card: [{}],
+	        };
+	        $scope.addQuestion = function () {
+	          $scope.newDeck.card.push({});
+	        };
+
+	        $scope.addDeck = function () {
+	          console.log($scope.newDeck);
+	        };
+	      },
+	    });
 	  });
-	});
+	})();
 
 
 /***/ }

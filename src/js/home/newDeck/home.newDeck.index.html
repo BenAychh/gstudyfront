@@ -17,27 +17,30 @@
     <div class="panel panel-default">
       <div class="panel-heading">Cards</div>
       <div class="panel-body">
-        <div class="form-group">
-          <label for="deckName">Question</label>
-          <input class="form-control" type="text" ng-model="newDeck.card[0].question">
+        <div ng-repeat="card in newDeck.card">
+          <div class="form-group">
+            <label for="deckName">Question</label>
+            <input class="form-control" type="text" ng-model="newDeck.card[$index].question">
+          </div>
+          <div class="form-group">
+            <label for="description">Answer</label>
+            <input class="form-control" type="text" ng-model="newDeck.card[$index].answer">
+          </div>
+          <div class="form-group">
+            <label for="description">Question Image URL (optional)</label>
+            <input class="form-control" type="text" ng-model="newDeck.card[$index].questionImageUrl">
+          </div>
+          <div class="form-group">
+            <label for="description">Answer Image URL (optional)</label>
+            <input class="form-control" type="text" ng-model="newDeck.card[$index].answerImageUrl">
+          </div>
+          <hr>
         </div>
-        <div class="form-group">
-          <label for="description">Answer</label>
-          <input class="form-control" type="text" ng-model="newDeck.card[0].answer">
-        </div>
-        <div class="form-group">
-          <label for="description">Question Image URL (optional)</label>
-          <input class="form-control" type="text" ng-model="newDeck.card[0].questionImageUrl">
-        </div>
-        <div class="form-group">
-          <label for="description">Answer Image URL (optional)</label>
-          <input class="form-control" type="text" ng-model="newDeck.card[0].answerImageUrl">
-        </div>
-        <hr>
-        <p>
+        <p ng-click="addQuestion()">
           <span class="glyphicon glyphicon-plus"></span> Add a New Question
         </p>
       </div>
     </div>
+    <input type="button" value="Test" ng-click="addDeck()">
   </form>
 </div>
