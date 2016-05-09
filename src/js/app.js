@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
   require('./routes.js')();
 
@@ -16,7 +16,6 @@
       .state('home', {
         url: '/home',
         templateUrl: 'js/home/home.index.html',
-      })
-    $urlRouterProvider.otherwise('/');
+      });
   });
 })();

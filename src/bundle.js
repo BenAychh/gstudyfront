@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	(function() {
+	(function () {
 	  'use strict';
 	  __webpack_require__(1)();
 
@@ -62,8 +62,7 @@
 	      .state('home', {
 	        url: '/home',
 	        templateUrl: 'js/home/home.index.html',
-	      })
-	    $urlRouterProvider.otherwise('/');
+	      });
 	  });
 	})();
 
@@ -82,7 +81,7 @@
 /***/ function(module, exports) {
 
 	angular.module('app.home', ['ui.router'])
-	.config(function ($stateProvider, $urlRouterProvider) {
+	.config(function ($stateProvider) {
 	  $stateProvider
 	    .state('home', {
 	      url: '/',
@@ -90,9 +89,8 @@
 	    })
 	    .state('home.test', {
 	      url: '/test',
-	      templateUrl: 'home.index.html',
+	      templateUrl: 'home.test.html',
 	    });
-	  $urlRouterProvider.otherwise('/');
 	});
 
 
