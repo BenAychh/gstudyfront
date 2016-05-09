@@ -52,17 +52,14 @@
 	  .config(function ($stateProvider, $urlRouterProvider) {
 	    $stateProvider
 	      .state('login', {
+	        abstract: true,
 	        url: '/',
 	        templateUrl: 'js/login/login.login.html',
 	      })
 	      .state('register', {
 	        url: '/register',
 	        templateUrl: 'js/register/register.register.html',
-	      })
-	      .state('home', {
-	        url: '/home',
-	        templateUrl: 'js/home/home.index.html',
-	      })
+	      });
 	  });
 	})();
 
@@ -83,10 +80,15 @@
 	angular.module('app.home', ['ui.router'])
 	.config(function ($stateProvider) {
 	  $stateProvider
-	    .state('home.test', {
-	      url: '/test',
-	      templateUrl: 'js/home/home.test.html',
-	    });
+	  .state('home', {
+	    url: '/home',
+	    abstract: true,
+	    templateUrl: 'js/home/home.index.html',
+	  })
+	  .state('home.default', {
+	    url: '',
+	    templateUrl: 'js/home/default/home.default.html',
+	  });
 	});
 
 

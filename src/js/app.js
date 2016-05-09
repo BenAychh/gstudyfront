@@ -6,16 +6,13 @@
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('login', {
+        abstract: true,
         url: '/',
         templateUrl: 'js/login/login.login.html',
       })
       .state('register', {
         url: '/register',
         templateUrl: 'js/register/register.register.html',
-      })
-      .state('home', {
-        url: '/home',
-        templateUrl: 'js/home/home.index.html',
-      })
+      });
   });
 })();
