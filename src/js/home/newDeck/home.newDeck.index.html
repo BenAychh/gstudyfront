@@ -6,11 +6,11 @@
       <div class="panel-body">
         <div class="form-group">
           <label for="deckName">Deck Name</label>
-          <input class="form-control" type="text" ng-model="newDeck.deckName">
+          <input class="form-control" type="text" ng-model="newDeck.name">
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <textarea class="form-control" ng-model="newDeck.description"></textarea>
+          <textarea class="form-control" ng-model="newDeck.descrip"></textarea>
         </div>
       </div>
     </div>
@@ -29,11 +29,11 @@
             </div>
             <div class="form-group col-xs-6">
               <label for="description">Question Image URL (optional)</label>
-              <input class="form-control" type="text" ng-model="newDeck.card[$index].questionImageUrl">
+              <input class="form-control" type="text" ng-model="newDeck.card[$index].q_img">
             </div>
             <div class="form-group col-xs-6">
               <label for="description">Answer Image URL (optional)</label>
-              <input class="form-control" type="text" ng-model="newDeck.card[$index].answerImageUrl">
+              <input class="form-control" type="text" ng-model="newDeck.card[$index].a_img">
             </div>
           </div>
         </div>

@@ -93,10 +93,10 @@
 	    .state('home.newDeck', {
 	      url: '/newDeck',
 	      templateUrl: 'js/home/newDeck/home.newDeck.index.html',
-	      controller: function ($scope) {
+	      controller: function ($scope, $http) {
 	        $scope.newDeck = {
-	          deckName: '',
-	          description: '',
+	          name: '',
+	          descrip: '',
 	          card: [{}],
 	        };
 	        $scope.addQuestion = function () {
@@ -104,7 +104,14 @@
 	        };
 
 	        $scope.addDeck = function () {
-	          console.log($scope.newDeck);
+	          $http({
+	            method: 'POST',
+	            url: 'http://10.2.12.248:3000/decks/add/1',
+	            data: $scope.newDeck,
+	          })
+	          .then(response => {
+	            console.log(response);
+	          })
 	        };
 	      },
 	    });
