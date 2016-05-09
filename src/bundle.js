@@ -52,7 +52,6 @@
 	  .config(function ($stateProvider, $urlRouterProvider) {
 	    $stateProvider
 	      .state('login', {
-	        abstract: true,
 	        url: '/',
 	        templateUrl: 'js/login/login.login.html',
 	      })
