@@ -44,36 +44,42 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1),
+	__webpack_require__(1)();
 
-	angular.module('app', ['app.home', 'ui.router'])
+	angular.module('app', ['ui.router'])
 	.config(function ($stateProvider, $urlRouterProvider) {
 	  $stateProvider
-	    .state('app', {
+	    .state('login', {
 	      url: '/',
-	      templateUrl: 'js/home/login/home.login.login.html',
-	    });
+	      templateUrl: 'js/login/login.login.html',
+	    })
+	    .state('register', {
+	      url: '/register',
+	      templateUrl: 'js/register/register.register.html',
+	    })
+	    .state('home', {
+	      url: '/home',
+	      templateUrl: 'js/home/index/home.index.html',
+
+	    })
 	  $urlRouterProvider.otherwise('/');
 	});
 
 
 /***/ },
 /* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = () => {
+	  __webpack_require__(2);
+	};
+
+
+/***/ },
+/* 2 */
 /***/ function(module, exports) {
 
-	angular.module('app.home', ['ui.router'])
-	.config(function ($stateProvider, $urlRouterProvider) {
-	  $stateProvider
-	    .state('home.login', {
-	      url: '/',
-	      templateUrl: 'js/home/login/home.login.login.html',
-	    })
-	    .state('home.register', {
-	      url: '/register',
-	      templateUrl: '/js/home/register/home.register.register.html',
-	    });
-	  $urlRouterProvider.otherwise('/');
-	});
+	// angular.module('app.login');
 
 
 /***/ }

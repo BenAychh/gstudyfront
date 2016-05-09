@@ -1,11 +1,20 @@
-require('./home/home.js'),
+require('./routes.js')();
 
-angular.module('app', ['app.home', 'ui.router'])
+angular.module('app', ['ui.router'])
 .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('app', {
+    .state('login', {
       url: '/',
-      templateUrl: 'js/home/login/home.login.login.html',
-    });
+      templateUrl: 'js/login/login.login.html',
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'js/register/register.register.html',
+    })
+    .state('home', {
+      url: '/home',
+      templateUrl: 'js/home/index/home.index.html',
+
+    })
   $urlRouterProvider.otherwise('/');
 });
